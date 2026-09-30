@@ -245,9 +245,10 @@
     content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.35), transparent 50%);
     pointer-events: none;
   }
+  .media-stage { position: absolute; inset: 0; }
   .play-icon {
     position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-    width: 52px; height: 52px; border-radius: 50%; z-index: 3;
+    width: 52px; height: 52px; border-radius: 50%; z-index: 3; cursor: pointer;
     background: rgba(0,0,0,0.5); backdrop-filter: blur(8px);
     display: flex; align-items: center; justify-content: center;
     border: 1.5px solid rgba(255,255,255,0.4); transition: var(--trans);
@@ -361,11 +362,8 @@
     .work-card { break-inside: avoid; box-shadow: none !important; border: 1px solid #ddd !important; }
     .work-media { aspect-ratio: 4/3 !important; }
     .work-media video { display: none !important; }
-    .video-card .work-media::before {
-      content: "▶ 视频"; position: absolute; inset: 0; display: flex;
-      align-items: center; justify-content: center; color: #999; font-size: 14px;
-      background: #f0f0f0; z-index: 1;
-    }
+    .video-card .work-media::before { content: none !important; }
+    .video-card .poster-img { display: block !important; }
     .skills-grid, .contact-grid { grid-template-columns: repeat(2, 1fr) !important; }
     .card, .skill-card, .contact-item { box-shadow: none !important; }
     [data-theme="dark"] { --bg: #fff; --surface: #fff; --text: #000; --text-soft: #333; --text-muted: #666; --border: #ddd; --border-soft: #eee; }
@@ -517,16 +515,16 @@ const resume = {
             { file: "moon-2.jpg", type: "photo", title: "孤月高悬", titleEn: "Solitary Moon", desc: "一轮孤月独立夜空，万物静默，唯余月色。" },
             { file: "moon-3.jpg", type: "photo", title: "月白如霜", titleEn: "Moon White as Frost", desc: "月色如霜般铺展，清冷中透出温柔的光泽。" },
             { file: "sun.jpg", type: "photo", title: "日色如金", titleEn: "Sunlight as Gold", desc: "阳光洒落如金，将世间万物都镀上一层暖。" },
-            { file: "starts-1.mp4", type: "video", title: "星河漫游", titleEn: "Starry Drift", desc: "夜空星河缓缓流动，时间仿佛静止。" },
-            { file: "starts-2.mp4", type: "video", title: "星轨轮转", titleEn: "Star Trails", desc: "星轨在夜空中划出弧线，记录着地球的呼吸。" },
-            { file: "starts-3.mp4", type: "video", title: "夜空絮语", titleEn: "Night Whisper", desc: "繁星闪烁如低语，诉说着宇宙的秘密。" },
-            { file: "starts-4.mp4", type: "video", title: "繁星入梦", titleEn: "Stars in Dreams", desc: "漫天繁星铺陈，引人坠入星夜的梦境。" }
+            { file: "starts-1.mp4", poster: "starts-1-poster.jpg", type: "video", title: "星河漫游", titleEn: "Starry Drift", desc: "夜空星河缓缓流动，时间仿佛静止。" },
+            { file: "starts-2.mp4", poster: "starts-2-poster.jpg", type: "video", title: "星轨轮转", titleEn: "Star Trails", desc: "星轨在夜空中划出弧线，记录着地球的呼吸。" },
+            { file: "starts-3.mp4", poster: "starts-3-poster.jpg", type: "video", title: "夜空絮语", titleEn: "Night Whisper", desc: "繁星闪烁如低语，诉说着宇宙的秘密。" },
+            { file: "starts-4.mp4", poster: "starts-4-poster.jpg", type: "video", title: "繁星入梦", titleEn: "Stars in Dreams", desc: "漫天繁星铺陈，引人坠入星夜的梦境。" }
           ]
         },
         {
           key: "dawn", name: "晨昏光影",
           items: [
-            { file: "morning.JPG", type: "photo", title: "晨光熹微", titleEn: "Dawning Light", desc: "黎明初现，微光穿透薄雾，唤醒沉睡的世界。" },
+            { file: "morning.jpg", type: "photo", title: "晨光熹微", titleEn: "Dawning Light", desc: "黎明初现，微光穿透薄雾，唤醒沉睡的世界。" },
             { file: "morning-1.jpg", type: "photo", title: "薄雾初醒", titleEn: "Misty Awakening", desc: "晨雾尚未散去，一切都笼罩在朦胧的诗意中。" },
             { file: "evening-1.jpg", type: "photo", title: "暮色四合", titleEn: "Gathering Dusk", desc: "暮色渐浓，天地被染成温柔的橘红。" },
             { file: "evening-2.jpg", type: "photo", title: "落日熔金", titleEn: "Molten Sunset", desc: "夕阳如熔金般沉入地平线，绚烂而壮美。" },
@@ -549,7 +547,7 @@ const resume = {
           items: [
             { file: "road.jpg", type: "photo", title: "通向远方", titleEn: "Road to Nowhere", desc: "公路延伸向无尽的远方，承载着对未知的向往。" },
             { file: "road-flower.jpg", type: "photo", title: "路边盛夏", titleEn: "Summer by the Road", desc: "路边野花盛开，在盛夏的风中摇曳生姿。" },
-            { file: "trip.mp4", type: "video", title: "一路行迹", titleEn: "Journey Footprints", desc: "旅途的片段被镜头串联，成为记忆的注脚。" }
+            { file: "trip.mp4", poster: "trip-poster.jpg", type: "video", title: "一路行迹", titleEn: "Journey Footprints", desc: "旅途的片段被镜头串联，成为记忆的注脚。" }
           ]
         },
         {
@@ -629,7 +627,7 @@ const resume = {
         {
           key: "dawn", name: "Dawn & Dusk",
           items: [
-            { file: "morning.JPG", type: "photo", title: "Dawning Light", titleEn: "晨光熹微", desc: "Dawn breaks; faint light pierces the mist, waking the world." },
+            { file: "morning.jpg", type: "photo", title: "Dawning Light", titleEn: "晨光熹微", desc: "Dawn breaks; faint light pierces the mist, waking the world." },
             { file: "morning-1.jpg", type: "photo", title: "Misty Awakening", titleEn: "薄雾初醒", desc: "Morning mist lingers, wrapping everything in hazy poetry." },
             { file: "evening-1.jpg", type: "photo", title: "Gathering Dusk", titleEn: "暮色四合", desc: "Dusk deepens, the world dyed in tender orange-red." },
             { file: "evening-2.jpg", type: "photo", title: "Molten Sunset", titleEn: "落日熔金", desc: "The sun sinks like molten gold, brilliant and magnificent." },
@@ -845,27 +843,31 @@ function renderWorkCard(it) {
   const isVideo = it.type === "video";
   const card = el("article", { class: "work-card" + (isVideo ? " video-card" : "") });
   const media = el("div", { class: "work-media" });
+  const stage = el("div", { class: "media-stage" });
 
-  let mediaEl;
   if (isVideo) {
-    mediaEl = el("video", {
-      src: it.file, preload: "metadata", playsinline: "",
-      "webkit-playsinline": "", muted: "", loop: ""
+    // 视频默认只显示封面图（极小），点击播放时才下载视频文件
+    stage.appendChild(el("img", { class: "poster-img", src: it.poster, alt: it.title, loading: "lazy", decoding: "async" }));
+    const play = el("div", {
+      class: "play-icon", role: "button", tabindex: "0",
+      "aria-label": "播放视频：" + it.title,
+      html: '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>'
     });
-    mediaEl.addEventListener("click", (e) => {
-      e.preventDefault();
-      if (mediaEl.paused) { mediaEl.play(); mediaEl.controls = true; }
-      else { mediaEl.pause(); }
+    const loadVideo = () => {
+      const v = el("video", { src: it.file, controls: "", autoplay: "", playsinline: "", "webkit-playsinline": "", preload: "auto" });
+      stage.innerHTML = "";
+      stage.appendChild(v);
+      v.play().catch(() => {});
+    };
+    play.addEventListener("click", loadVideo);
+    play.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); loadVideo(); }
     });
-    const play = el("div", { class: "play-icon", html: '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>' });
-    mediaEl.addEventListener("play", () => play.style.display = "none");
-    mediaEl.addEventListener("pause", () => { play.style.display = "flex"; mediaEl.controls = false; });
-    media.appendChild(mediaEl);
-    media.appendChild(play);
+    stage.appendChild(play);
   } else {
-    mediaEl = el("img", { src: it.file, alt: it.title, loading: "lazy" });
-    media.appendChild(mediaEl);
+    stage.appendChild(el("img", { src: it.file, alt: it.title, loading: "lazy", decoding: "async" }));
   }
+  media.appendChild(stage);
 
   const badge = el("span", { class: "work-badge" });
   badge.appendChild(el("span", { class: "pulse" }));
