@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>李云 · 影像创作者 | 作品集</title>
+<meta name="description" content="李云的个人影像作品集与简历 — 机械电子工程 / 影像拍摄与后期制作" />
+<style>
+  /* ============ Design Tokens ============ */
+  :root {
+    --bg: #faf8f5;
+    --bg-soft: #f3f0ea;
+    --surface: #ffffff;
+    --surface-hover: #ffffff;
+    --primary: #1e3a5f;
+    --primary-light: #2c5282;
+    --primary-soft: rgba(30, 58, 95, 0.06);
+    --accent: #b08d4a;
+    --accent-light: #c9a961;
+    --accent-soft: rgba(176, 141, 74, 0.12);
+    --text: #1a202c;
+    --text-soft: #4a5568;
+    --text-muted: #8291a8;
+    --border: #e5e0d6;
+    --border-soft: #ede8dd;
+    --shadow-sm: 0 1px 2px rgba(30, 58, 95, 0.06), 0 1px 3px rgba(30, 58, 95, 0.04);
+    --shadow-md: 0 4px 12px rgba(30, 58, 95, 0.08), 0 2px 4px rgba(30, 58, 95, 0.04);
+    --shadow-lg: 0 12px 32px rgba(30, 58, 95, 0.12), 0 4px 8px rgba(30, 58, 95, 0.06);
+    --gradient-hero: linear-gradient(135deg, #1e3a5f 0%, #2c5282 45%, #3a5a8c 100%);
+    --gradient-accent: linear-gradient(135deg, #b08d4a 0%, #d4a574 100%);
+    --radius-sm: 8px;
+    --radius: 14px;
+    --radius-lg: 20px;
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --font-serif: "Songti SC", "SimSun", "Noto Serif SC", Georgia, serif;
+    --trans: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  [data-theme="dark"] {
+    --bg: #0d1117;
+    --bg-soft: #121820;
+    --surface: #161d28;
+    --surface-hover: #1c2533;
+    --primary: #6b93d6;
+    --primary-light: #8bb0e6;
+    --primary-soft: rgba(107, 147, 214, 0.1);
+    --accent: #d4a574;
+    --accent-light: #e0b88a;
+    --accent-soft: rgba(212, 165, 116, 0.14);
+    --text: #e6edf3;
+    --text-soft: #b6c2d1;
+    --text-muted: #7d8a9c;
+    --border: #2a3342;
+    --border-soft: #1f2733;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.35), 0 2px 4px rgba(0, 0, 0, 0.2);
+    --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.45), 0 4px 10px rgba(0, 0, 0, 0.3);
+    --gradient-hero: linear-gradient(135deg, #0f1c2e 0%, #162844 50%, #1a3358 100%);
+  }
+
+  /* ============ Reset & Base ============ */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--accent-soft) 0%, transparent 40%),
+      radial-gradient(circle at 85% 15%, var(--primary-soft) 0%, transparent 35%);
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+  a { color: inherit; text-decoration: none; }
+  img, video { max-width: 100%; display: block; }
+  button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+  ul { list-style: none; }
+
+  /* ============ Layout ============ */
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+  section { padding: 88px 0; position: relative; }
+  .section-head { margin-bottom: 44px; }
+  .section-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent); font-weight: 600; margin-bottom: 12px;
+  }
+  .section-eyebrow::before { content: ""; width: 28px; height: 1.5px; background: var(--accent); border-radius: 2px; }
+  .section-title { font-size: clamp(26px, 4vw, 38px); font-weight: 700; color: var(--text); letter-spacing: -0.01em; }
+  .section-sub { color: var(--text-muted); margin-top: 8px; font-size: 15px; }
+
+  /* ============ Navbar ============ */
+  .navbar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    background: color-mix(in srgb, var(--bg) 78%, transparent);
+    border-bottom: 1px solid var(--border-soft);
+    transition: var(--trans);
+  }
+  .nav-inner {
+    max-width: 1180px; margin: 0 auto; padding: 0 24px;
+    display: flex; align-items: center; justify-content: space-between; height: 64px;
+  }
+  .nav-brand {
+    font-weight: 700; font-size: 18px; letter-spacing: 0.02em;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .nav-brand .dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--gradient-accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+  .nav-links { display: flex; align-items: center; gap: 4px; }
+  .nav-links a {
+    padding: 8px 14px; border-radius: 8px; font-size: 14px; color: var(--text-soft);
+    transition: var(--trans); font-weight: 500;
+  }
+  .nav-links a:hover { color: var(--primary); background: var(--primary-soft); }
+  .nav-actions { display: flex; align-items: center; gap: 8px; }
+  .icon-btn {
+    width: 38px; height: 38px; border-radius: 10px;
+    display: inline-flex; align-items: center; justify-content: center;
+    color: var(--text-soft); border: 1px solid var(--border);
+    background: var(--surface); transition: var(--trans);
+  }
+  .icon-btn:hover { color: var(--primary); border-color: var(--primary); transform: translateY(-1px); }
+  .icon-btn svg { width: 18px; height: 18px; stroke-width: 1.8; }
+  .nav-toggle { display: none; }
+
+  /* ============ Hero ============ */
+  .hero {
+    position: relative; padding: 140px 0 90px; overflow: hidden;
+    background: var(--gradient-hero);
+    color: #fff;
+  }
+  .hero::before {
+    content: ""; position: absolute; inset: 0;
+    background-image:
+      radial-gradient(circle at 15% 20%, rgba(212,165,116,0.18) 0%, transparent 35%),
+      radial-gradient(circle at 85% 75%, rgba(107,147,214,0.15) 0%, transparent 40%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: ""; position: absolute; inset: 0; opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M0 30h60M30 0v60' stroke='%23fff' stroke-width='0.5'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+  .hero-inner { position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgba(255,255,255,0.7); margin-bottom: 20px;
+  }
+  .hero-eyebrow::before { content: ""; width: 24px; height: 1.5px; background: var(--accent-light); }
+  .hero h1 {
+    font-size: clamp(40px, 7vw, 72px); font-weight: 800; line-height: 1.05;
+    letter-spacing: -0.02em; margin-bottom: 16px;
+  }
+  .hero h1 .accent {
+    background: linear-gradient(120deg, #e0b88a 0%, #f0d9a8 60%, #e0b88a 100%);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .hero-title { font-size: clamp(16px, 2.4vw, 21px); color: rgba(255,255,255,0.82); margin-bottom: 28px; font-weight: 400; }
+  .hero-summary {
+    max-width: 680px; font-size: 15.5px; line-height: 1.85; color: rgba(255,255,255,0.78);
+    margin-bottom: 32px;
+  }
+  .hero-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 36px; }
+  .hero-tags span {
+    padding: 6px 14px; border-radius: 999px; font-size: 13px; font-weight: 500;
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.16);
+    color: rgba(255,255,255,0.92); backdrop-filter: blur(4px);
+  }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 22px; border-radius: 10px; font-size: 14.5px; font-weight: 600;
+    transition: var(--trans); border: 1px solid transparent;
+  }
+  .btn-primary { background: var(--gradient-accent); color: #1a1a1a; box-shadow: 0 4px 14px rgba(176,141,74,0.4); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(176,141,74,0.5); }
+  .btn-ghost { background: rgba(255,255,255,0.08); color: #fff; border-color: rgba(255,255,255,0.22); }
+  .btn-ghost:hover { background: rgba(255,255,255,0.16); }
+  .btn-outline { background: var(--surface); color: var(--primary); border-color: var(--border); }
+  .btn-outline:hover { border-color: var(--primary); transform: translateY(-1px); }
+
+  /* ============ Cards ============ */
+  .card {
+    background: var(--surface); border: 1px solid var(--border-soft); border-radius: var(--radius);
+    overflow: hidden; transition: var(--trans); box-shadow: var(--shadow-sm);
+  }
+  .card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: var(--border); }
+
+  /* ============ Portfolio / Tabs ============ */
+  .tabs-nav {
+    display: flex; gap: 6px; flex-wrap: wrap; padding: 6px; margin-bottom: 36px;
+    background: var(--surface); border: 1px solid var(--border-soft);
+    border-radius: var(--radius); box-shadow: var(--shadow-sm);
+  }
+  .tab-btn {
+    flex: 1; min-width: max-content; padding: 10px 18px; border-radius: 9px;
+    font-size: 14px; font-weight: 600; color: var(--text-muted);
+    transition: var(--trans); white-space: nowrap;
+  }
+  .tab-btn:hover { color: var(--text-soft); background: var(--bg-soft); }
+  .tab-btn[aria-selected="true"] {
+    color: #fff; background: var(--gradient-accent);
+    box-shadow: 0 4px 12px rgba(176,141,74,0.3);
+  }
+  [data-theme="dark"] .tab-btn[aria-selected="true"] { color: #1a1a1a; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; animation: fadeUp 0.4s ease; }
+
+  .portfolio-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 22px;
+  }
+  .work-card {
+    background: var(--surface); border: 1px solid var(--border-soft); border-radius: var(--radius);
+    overflow: hidden; transition: var(--trans); box-shadow: var(--shadow-sm);
+    display: flex; flex-direction: column;
+  }
+  .work-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--border); }
+  .work-media {
+    position: relative; aspect-ratio: 4/3; overflow: hidden; background: var(--bg-soft);
+  }
+  .work-media img, .work-media video {
+    width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
+  }
+  .work-card:hover .work-media img, .work-card:hover .work-media video { transform: scale(1.05); }
+  .work-badge {
+    position: absolute; top: 12px; left: 12px; z-index: 2;
+    padding: 4px 11px; border-radius: 999px; font-size: 11.5px; font-weight: 600;
+    background: rgba(0,0,0,0.55); color: #fff; backdrop-filter: blur(6px);
+    display: inline-flex; align-items: center; gap: 5px;
+  }
+  .work-badge .pulse { width: 6px; height: 6px; border-radius: 50%; background: var(--accent-light); }
+  .work-body { padding: 18px 20px 20px; flex: 1; display: flex; flex-direction: column; }
+  .work-title { font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+  .work-title-en { font-size: 12.5px; color: var(--text-muted); font-weight: 500; letter-spacing: 0.02em; margin-bottom: 10px; }
+  .work-desc { font-size: 13.5px; color: var(--text-soft); line-height: 1.6; }
+  .video-card .work-media::after {
+    content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.35), transparent 50%);
+    pointer-events: none;
+  }
+  .play-icon {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 52px; height: 52px; border-radius: 50%; z-index: 3;
+    background: rgba(0,0,0,0.5); backdrop-filter: blur(8px);
+    display: flex; align-items: center; justify-content: center;
+    border: 1.5px solid rgba(255,255,255,0.4); transition: var(--trans);
+  }
+  .play-icon svg { width: 20px; height: 20px; fill: #fff; margin-left: 2px; }
+  .work-card:hover .play-icon { background: rgba(176,141,74,0.85); transform: translate(-50%,-50%) scale(1.08); }
+
+  /* ============ Skills ============ */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px; }
+  .skill-card {
+    background: var(--surface); border: 1px solid var(--border-soft); border-radius: var(--radius);
+    padding: 26px; box-shadow: var(--shadow-sm); transition: var(--trans);
+  }
+  .skill-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+  .skill-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 14px; }
+  .skill-name { font-size: 18px; font-weight: 700; color: var(--text); display: flex; align-items: center; gap: 10px; }
+  .skill-icon { width: 34px; height: 34px; border-radius: 9px; display: inline-flex; align-items: center; justify-content: center; background: var(--accent-soft); color: var(--accent); }
+  .skill-icon svg { width: 18px; height: 18px; stroke-width: 1.8; }
+  .skill-level { font-size: 13px; font-weight: 600; color: var(--accent); }
+  .skill-bar { height: 6px; background: var(--bg-soft); border-radius: 999px; overflow: hidden; margin-bottom: 16px; }
+  .skill-bar-fill { height: 100%; background: var(--gradient-accent); border-radius: 999px; width: 0; transition: width 1s cubic-bezier(0.4,0,0.2,1); }
+  .skill-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip {
+    padding: 5px 12px; border-radius: 7px; font-size: 12.5px; font-weight: 500;
+    background: var(--bg-soft); color: var(--text-soft); border: 1px solid var(--border-soft);
+    transition: var(--trans);
+  }
+  .chip:hover { background: var(--accent-soft); color: var(--accent); border-color: var(--accent); }
+
+  /* ============ Contact ============ */
+  .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .contact-item {
+    background: var(--surface); border: 1px solid var(--border-soft); border-radius: var(--radius);
+    padding: 20px; display: flex; align-items: center; gap: 14px; transition: var(--trans);
+  }
+  .contact-item:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--border); }
+  .contact-icon {
+    width: 44px; height: 44px; border-radius: 11px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--primary-soft); color: var(--primary);
+  }
+  .contact-icon svg { width: 20px; height: 20px; stroke-width: 1.8; }
+  .contact-label { font-size: 12px; color: var(--text-muted); margin-bottom: 2px; }
+  .contact-value { font-size: 14.5px; font-weight: 600; color: var(--text); word-break: break-all; }
+  .copy-btn {
+    margin-left: auto; padding: 5px 12px; border-radius: 7px; font-size: 12px; font-weight: 600;
+    background: var(--bg-soft); color: var(--text-soft); border: 1px solid var(--border-soft);
+    transition: var(--trans); flex-shrink: 0;
+  }
+  .copy-btn:hover { background: var(--primary-soft); color: var(--primary); }
+  .copy-btn.copied { background: #48bb78; color: #fff; border-color: #48bb78; }
+
+  /* ============ Footer ============ */
+  footer {
+    border-top: 1px solid var(--border-soft); padding: 36px 0;
+    background: var(--bg-soft); color: var(--text-muted); font-size: 13px;
+  }
+  .footer-inner { max-width: 1180px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+
+  /* ============ Back to top ============ */
+  .to-top {
+    position: fixed; bottom: 28px; right: 28px; z-index: 90;
+    width: 46px; height: 46px; border-radius: 50%;
+    background: var(--primary); color: #fff; box-shadow: var(--shadow-lg);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none; transform: translateY(14px); transition: var(--trans);
+  }
+  .to-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+  .to-top:hover { background: var(--primary-light); transform: translateY(-2px); }
+  .to-top svg { width: 20px; height: 20px; stroke-width: 2; }
+
+  /* ============ Animations ============ */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+    .reveal { opacity: 1; transform: none; }
+  }
+
+  /* ============ Responsive ============ */
+  @media (max-width: 820px) {
+    .nav-links { display: none; }
+    .nav-toggle { display: inline-flex; }
+    .nav-links.open {
+      display: flex; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0;
+      background: var(--surface); border-bottom: 1px solid var(--border-soft);
+      padding: 12px 16px; gap: 4px; box-shadow: var(--shadow-md);
+    }
+    .nav-links.open a { padding: 12px 14px; }
+    section { padding: 64px 0; }
+    .hero { padding: 110px 0 64px; }
+    .tabs-nav { overflow-x: auto; flex-wrap: nowrap; -webkit-overflow-scrolling: touch; }
+    .tab-btn { flex: none; }
+  }
+  @media (max-width: 480px) {
+    .hero-actions { flex-direction: column; align-items: stretch; }
+    .hero-actions .btn { justify-content: center; }
+    .portfolio-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ============ Print ============ */
+  @media print {
+    .navbar, .to-top, .nav-actions, .hero-actions, .tabs-nav, .play-icon, .copy-btn { display: none !important; }
+    body { background: #fff !important; background-image: none !important; }
+    section { padding: 24px 0 !important; page-break-inside: avoid; }
+    .hero { background: #1e3a5f !important; padding: 40px 0 !important; }
+    .hero h1 { font-size: 36px !important; }
+    .tab-panel { display: block !important; }
+    .portfolio-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; }
+    .work-card { break-inside: avoid; box-shadow: none !important; border: 1px solid #ddd !important; }
+    .work-media { aspect-ratio: 4/3 !important; }
+    .work-media video { display: none !important; }
+    .video-card .work-media::before {
+      content: "▶ 视频"; position: absolute; inset: 0; display: flex;
+      align-items: center; justify-content: center; color: #999; font-size: 14px;
+      background: #f0f0f0; z-index: 1;
+    }
+    .skills-grid, .contact-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    .card, .skill-card, .contact-item { box-shadow: none !important; }
+    [data-theme="dark"] { --bg: #fff; --surface: #fff; --text: #000; --text-soft: #333; --text-muted: #666; --border: #ddd; --border-soft: #eee; }
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<header class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="#top" class="nav-brand"><span class="dot"></span><span id="navName">李云</span></a>
+    <nav class="nav-links" id="navLinks" aria-label="主导航">
+      <a href="#about" data-i18n="nav.about">关于</a>
+      <a href="#portfolio" data-i18n="nav.portfolio">作品集</a>
+      <a href="#skills" data-i18n="nav.skills">技能</a>
+      <a href="#contact" data-i18n="nav.contact">联系</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" id="themeBtn" title="深浅色切换" aria-label="切换主题">
+        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </button>
+      <button class="icon-btn" id="printBtn" title="打印 / 导出 PDF" aria-label="打印">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v8H6z"/></svg>
+      </button>
+      <button class="icon-btn nav-toggle" id="navToggle" aria-label="菜单">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow" data-i18n="hero.eyebrow">影像创作者 · VISUAL STORYTELLER</div>
+    <h1><span data-i18n="hero.name">李云</span> <span class="accent" data-i18n="hero.nameSub">· 影像作品集</span></h1>
+    <p class="hero-title" data-i18n="hero.title">机械电子工程 · 影像拍摄与后期制作</p>
+    <p class="hero-summary" data-i18n="hero.summary"></p>
+    <div class="hero-tags" id="heroTags"></div>
+    <div class="hero-actions">
+      <a href="#portfolio" class="btn btn-primary" data-i18n="hero.cta1">浏览作品</a>
+      <a href="#contact" class="btn btn-ghost" data-i18n="hero.cta2">联系我</a>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about" class="reveal">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow" data-i18n="about.eyebrow">About</div>
+      <h2 class="section-title" data-i18n="about.title">关于我</h2>
+      <p class="section-sub" data-i18n="about.sub"></p>
+    </div>
+    <div class="card" style="padding: 32px; max-width: 820px;">
+      <p style="font-size: 15.5px; line-height: 1.9; color: var(--text-soft);" data-i18n="about.body"></p>
+    </div>
+  </div>
+</section>
+
+<!-- Portfolio -->
+<section id="portfolio" class="reveal" style="background: var(--bg-soft);">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow" data-i18n="portfolio.eyebrow">Portfolio</div>
+      <h2 class="section-title" data-i18n="portfolio.title">个人作品集</h2>
+      <p class="section-sub" data-i18n="portfolio.sub">摄影与影像创作，按主题分类呈现</p>
+    </div>
+    <div id="portfolioTabs"></div>
+  </div>
+</section>
+
+<!-- Skills -->
+<section id="skills" class="reveal">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow" data-i18n="skills.eyebrow">Skills</div>
+      <h2 class="section-title" data-i18n="skills.title">技能矩阵</h2>
+      <p class="section-sub" data-i18n="skills.sub">影像拍摄、后期制作与宣传策划能力</p>
+    </div>
+    <div class="skills-grid" id="skillsGrid"></div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="reveal" style="background: var(--bg-soft);">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow" data-i18n="contact.eyebrow">Contact</div>
+      <h2 class="section-title" data-i18n="contact.title">联系方式</h2>
+      <p class="section-sub" data-i18n="contact.sub">期待与你合作，欢迎随时联系</p>
+    </div>
+    <div class="contact-grid" id="contactGrid"></div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span id="footerCopy"></span>
+    <span id="footerUpdate"></span>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="返回顶部">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<script>
+/* ============ Resume Data (zh / en) ============ */
+const resume = {
+  zh: {
+    name: "李云",
+    navName: "李云",
+    hero: {
+      eyebrow: "影像创作者 · VISUAL STORYTELLER",
+      name: "李云",
+      nameSub: "· 影像作品集",
+      title: "机械电子工程 · 影像拍摄与后期制作",
+      summary: "智能制造系机械电子工程专业本科生，热爱影像创作。熟悉佳能 / 索尼微单、稳定器与三脚架的使用，可独立完成党建活动、会议、人物专访与短视频的拍摄；后期熟练使用剪映、Premiere、After Effects，胜任调色、剪辑、字幕、封面、基础动效与声音处理全流程。具备党建宣传经验，兼具新闻敏感度、纪律意识与保密意识。",
+      cta1: "浏览作品",
+      cta2: "联系我"
+    },
+    tags: ["佳能 / 索尼微单", "稳定器", "剪映", "Premiere Pro", "After Effects", "调色剪辑", "短视频拍摄", "党建宣传"],
+    nav: { about: "关于", portfolio: "作品集", skills: "技能", contact: "联系" },
+    about: {
+      eyebrow: "ABOUT",
+      title: "关于我",
+      sub: "用镜头记录光与影，用剪辑讲述温度与故事。",
+      body: "我是李云，智能制造系机械电子工程专业本科生。在工科学习之外，影像创作是我表达世界的方式——从清晨的第一缕光到深夜的星河，从城市街角的万家灯火到旅途中不期而遇的风景。我相信好的影像不止于记录，更在于传递情绪与温度。我擅长从前期策划、实拍执行到后期剪辑调色的完整流程，能将党建宣传、会议活动、人物专访等题材处理得既有专业水准又不失人文关怀。"
+    },
+    portfolio: {
+      eyebrow: "PORTFOLIO",
+      title: "个人作品集",
+      sub: "摄影与影像创作，按主题分类呈现",
+      all: "全部",
+      photo: "摄影",
+      video: "视频",
+      categories: [
+        {
+          key: "celestial", name: "日月星辰",
+          items: [
+            { file: "moon-1.jpg", type: "photo", title: "月夜清辉", titleEn: "Moonlit Clarity", desc: "深夜的月亮悬于天际，清辉如水，静谧而辽远。" },
+            { file: "moon-2.jpg", type: "photo", title: "孤月高悬", titleEn: "Solitary Moon", desc: "一轮孤月独立夜空，万物静默，唯余月色。" },
+            { file: "moon-3.jpg", type: "photo", title: "月白如霜", titleEn: "Moon White as Frost", desc: "月色如霜般铺展，清冷中透出温柔的光泽。" },
+            { file: "sun.jpg", type: "photo", title: "日色如金", titleEn: "Sunlight as Gold", desc: "阳光洒落如金，将世间万物都镀上一层暖。" },
+            { file: "starts-1.mp4", type: "video", title: "星河漫游", titleEn: "Starry Drift", desc: "夜空星河缓缓流动，时间仿佛静止。" },
+            { file: "starts-2.mp4", type: "video", title: "星轨轮转", titleEn: "Star Trails", desc: "星轨在夜空中划出弧线，记录着地球的呼吸。" },
+            { file: "starts-3.mp4", type: "video", title: "夜空絮语", titleEn: "Night Whisper", desc: "繁星闪烁如低语，诉说着宇宙的秘密。" },
+            { file: "starts-4.mp4", type: "video", title: "繁星入梦", titleEn: "Stars in Dreams", desc: "漫天繁星铺陈，引人坠入星夜的梦境。" }
+          ]
+        },
+        {
+          key: "dawn", name: "晨昏光影",
+          items: [
+            { file: "morning.JPG", type: "photo", title: "晨光熹微", titleEn: "Dawning Light", desc: "黎明初现，微光穿透薄雾，唤醒沉睡的世界。" },
+            { file: "morning-1.jpg", type: "photo", title: "薄雾初醒", titleEn: "Misty Awakening", desc: "晨雾尚未散去，一切都笼罩在朦胧的诗意中。" },
+            { file: "evening-1.jpg", type: "photo", title: "暮色四合", titleEn: "Gathering Dusk", desc: "暮色渐浓，天地被染成温柔的橘红。" },
+            { file: "evening-2.jpg", type: "photo", title: "落日熔金", titleEn: "Molten Sunset", desc: "夕阳如熔金般沉入地平线，绚烂而壮美。" },
+            { file: "evening-3.jpg", type: "photo", title: "晚霞余晖", titleEn: "Afterglow", desc: "晚霞将最后的余晖洒向人间，不舍离去。" },
+            { file: "evening-4.jpg", type: "photo", title: "夜将临", titleEn: "Nightfall", desc: "夜色悄然降临，白昼的喧嚣归于宁静。" }
+          ]
+        },
+        {
+          key: "urban", name: "城与人",
+          items: [
+            { file: "city-light.jpg", type: "photo", title: "万家灯火", titleEn: "Myriad Lights", desc: "城市夜色中万家灯火亮起，每一盏都是一个故事。" },
+            { file: "subway.jpg", type: "photo", title: "地下穿行", titleEn: "Underground Passage", desc: "地铁在城市地下穿行，载着无数人的归途与远方。" },
+            { file: "station-1.jpg", type: "photo", title: "月台之别", titleEn: "Platform Goodbye", desc: "月台上人来人往，离别与重逢在此交替上演。" },
+            { file: "station-2.jpg", type: "photo", title: "下一班车", titleEn: "Next Departure", desc: "列车即将进站，等待中的人们各怀心事。" },
+            { file: "light-door.jpg", type: "photo", title: "光的出口", titleEn: "Exit of Light", desc: "一道光从门中倾泻而出，指引着前行的方向。" }
+          ]
+        },
+        {
+          key: "journey", name: "行迹",
+          items: [
+            { file: "road.jpg", type: "photo", title: "通向远方", titleEn: "Road to Nowhere", desc: "公路延伸向无尽的远方，承载着对未知的向往。" },
+            { file: "road-flower.jpg", type: "photo", title: "路边盛夏", titleEn: "Summer by the Road", desc: "路边野花盛开，在盛夏的风中摇曳生姿。" },
+            { file: "trip.mp4", type: "video", title: "一路行迹", titleEn: "Journey Footprints", desc: "旅途的片段被镜头串联，成为记忆的注脚。" }
+          ]
+        },
+        {
+          key: "lines", name: "线条与秩序",
+          items: [
+            { file: "grid.jpg", type: "photo", title: "城市肌理", titleEn: "Urban Texture", desc: "规整的网格构成城市的肌理，秩序中蕴含节奏。" },
+            { file: "wire-1.jpg", type: "photo", title: "交错时光", titleEn: "Intertwined Time", desc: "电线在天空交错，如同时光编织的脉络。" },
+            { file: "wire-2.jpg", type: "photo", title: "线与空", titleEn: "Lines & Emptiness", desc: "简洁的线条与留白，构成极简的视觉语言。" }
+          ]
+        }
+      ]
+    },
+    skills: {
+      eyebrow: "SKILLS",
+      title: "技能矩阵",
+      sub: "影像拍摄、后期制作与宣传策划能力",
+      level: "熟练度",
+      list: [
+        { name: "影像拍摄", level: 85, icon: "camera", items: ["佳能微单", "索尼微单", "稳定器", "三脚架", "党建活动拍摄", "会议记录", "人物专访", "短视频拍摄"] },
+        { name: "后期制作", level: 90, icon: "edit", items: ["剪映", "Premiere Pro", "After Effects", "调色", "剪辑", "字幕", "封面设计", "基础动效", "声音处理"] },
+        { name: "党建宣传", level: 80, icon: "flag", items: ["主题党日", "党课学习", "红色研学", "志愿服务", "新闻敏感度", "纪律意识", "保密意识"] }
+      ]
+    },
+    contact: {
+      eyebrow: "CONTACT",
+      title: "联系方式",
+      sub: "期待与你合作，欢迎随时联系",
+      copy: "复制",
+      copied: "已复制",
+      phoneLabel: "电话", emailLabel: "邮箱", birthLabel: "出生",
+      eduLabel: "学历", majorLabel: "专业", deptLabel: "院系"
+    },
+    footer: { copy: "© 2026 李云 · 保留所有权利", update: "最后更新" }
+  },
+
+  en: {
+    name: "Li Yun",
+    navName: "Li Yun",
+    hero: {
+      eyebrow: "VISUAL STORYTELLER",
+      name: "Li Yun",
+      nameSub: "· Visual Portfolio",
+      title: "Mechatronic Engineering · Cinematography & Post-Production",
+      summary: "Undergraduate student majoring in Mechatronic Engineering at the Department of Intelligent Manufacturing, with a deep passion for visual storytelling. Experienced with Canon / Sony mirrorless cameras, gimbals and tripods; capable of independently shooting Party-building events, conferences, interviews and short videos. Proficient in CapCut, Premiere Pro and After Effects for color grading, editing, subtitles, cover design, basic motion graphics and audio post-processing. Brings news sensitivity, discipline and confidentiality awareness to Party publicity work.",
+      cta1: "View Works",
+      cta2: "Contact Me"
+    },
+    tags: ["Canon / Sony", "Gimbal", "CapCut", "Premiere Pro", "After Effects", "Color Grading", "Short Video", "Party Publicity"],
+    nav: { about: "About", portfolio: "Portfolio", skills: "Skills", contact: "Contact" },
+    about: {
+      eyebrow: "ABOUT",
+      title: "About Me",
+      sub: "Capturing light and shadow, telling stories with warmth through editing.",
+      body: "I'm Li Yun, an undergraduate in Mechatronic Engineering. Beyond engineering studies, visual creation is how I interpret the world — from the first ray of dawn to the starry river at midnight, from the myriad lights of city streets to unexpected scenery along the journey. I believe great imagery does more than record; it conveys emotion and warmth. I handle the full pipeline from pre-production planning and on-set execution to post editing and color grading, bringing both professional craft and humanistic care to Party publicity, conferences and interviews."
+    },
+    portfolio: {
+      eyebrow: "PORTFOLIO",
+      title: "Portfolio",
+      sub: "Photography & video works, organized by theme",
+      all: "All",
+      photo: "Photo",
+      video: "Video",
+      categories: [
+        {
+          key: "celestial", name: "Celestial Bodies",
+          items: [
+            { file: "moon-1.jpg", type: "photo", title: "Moonlit Clarity", titleEn: "月夜清辉", desc: "The moon hangs in the night sky, its clear glow like still water." },
+            { file: "moon-2.jpg", type: "photo", title: "Solitary Moon", titleEn: "孤月高悬", desc: "A lone moon stands in the night sky; all is silent but the moonlight." },
+            { file: "moon-3.jpg", type: "photo", title: "Moon White as Frost", titleEn: "月白如霜", desc: "Moonlight spreads like frost, cold yet tender in its glow." },
+            { file: "sun.jpg", type: "photo", title: "Sunlight as Gold", titleEn: "日色如金", desc: "Sunlight falls like gold, gilding everything in warmth." },
+            { file: "starts-1.mp4", type: "video", title: "Starry Drift", titleEn: "星河漫游", desc: "The starry river flows slowly; time seems to stand still." },
+            { file: "starts-2.mp4", type: "video", title: "Star Trails", titleEn: "星轨轮转", desc: "Star trails arc across the sky, recording the earth's breathing." },
+            { file: "starts-3.mp4", type: "video", title: "Night Whisper", titleEn: "夜空絮语", desc: "Stars twinkle like whispers, telling the universe's secrets." },
+            { file: "starts-4.mp4", type: "video", title: "Stars in Dreams", titleEn: "繁星入梦", desc: "A sky full of stars invites one into a starry dream." }
+          ]
+        },
+        {
+          key: "dawn", name: "Dawn & Dusk",
+          items: [
+            { file: "morning.JPG", type: "photo", title: "Dawning Light", titleEn: "晨光熹微", desc: "Dawn breaks; faint light pierces the mist, waking the world." },
+            { file: "morning-1.jpg", type: "photo", title: "Misty Awakening", titleEn: "薄雾初醒", desc: "Morning mist lingers, wrapping everything in hazy poetry." },
+            { file: "evening-1.jpg", type: "photo", title: "Gathering Dusk", titleEn: "暮色四合", desc: "Dusk deepens, the world dyed in tender orange-red." },
+            { file: "evening-2.jpg", type: "photo", title: "Molten Sunset", titleEn: "落日熔金", desc: "The sun sinks like molten gold, brilliant and magnificent." },
+            { file: "evening-3.jpg", type: "photo", title: "Afterglow", titleEn: "晚霞余晖", desc: "The sunset clouds cast their last glow, reluctant to leave." },
+            { file: "evening-4.jpg", type: "photo", title: "Nightfall", titleEn: "夜将临", desc: "Night quietly falls; the day's noise subsides into silence." }
+          ]
+        },
+        {
+          key: "urban", name: "Urban & People",
+          items: [
+            { file: "city-light.jpg", type: "photo", title: "Myriad Lights", titleEn: "万家灯火", desc: "City lights flicker on; each lamp is a story of its own." },
+            { file: "subway.jpg", type: "photo", title: "Underground Passage", titleEn: "地下穿行", desc: "The subway runs beneath the city, carrying countless journeys." },
+            { file: "station-1.jpg", type: "photo", title: "Platform Goodbye", titleEn: "月台之别", desc: "People come and go on the platform; farewells and reunions alternate." },
+            { file: "station-2.jpg", type: "photo", title: "Next Departure", titleEn: "下一班车", desc: "The train is arriving; waiting travelers carry their own thoughts." },
+            { file: "light-door.jpg", type: "photo", title: "Exit of Light", titleEn: "光的出口", desc: "Light pours through the doorway, guiding the way forward." }
+          ]
+        },
+        {
+          key: "journey", name: "On the Road",
+          items: [
+            { file: "road.jpg", type: "photo", title: "Road to Nowhere", titleEn: "通向远方", desc: "The road stretches endlessly, carrying a longing for the unknown." },
+            { file: "road-flower.jpg", type: "photo", title: "Summer by the Road", titleEn: "路边盛夏", desc: "Wildflowers bloom by the roadside, swaying in the summer wind." },
+            { file: "trip.mp4", type: "video", title: "Journey Footprints", titleEn: "一路行迹", desc: "Moments of the journey are woven together, becoming footnotes of memory." }
+          ]
+        },
+        {
+          key: "lines", name: "Lines & Order",
+          items: [
+            { file: "grid.jpg", type: "photo", title: "Urban Texture", titleEn: "城市肌理", desc: "Regular grids form the city's texture, rhythm within order." },
+            { file: "wire-1.jpg", type: "photo", title: "Intertwined Time", titleEn: "交错时光", desc: "Wires crisscross the sky like veins woven by time." },
+            { file: "wire-2.jpg", type: "photo", title: "Lines & Emptiness", titleEn: "线与空", desc: "Minimal lines and negative space form a concise visual language." }
+          ]
+        }
+      ]
+    },
+    skills: {
+      eyebrow: "SKILLS",
+      title: "Skills Matrix",
+      sub: "Cinematography, post-production and publicity capabilities",
+      level: "Proficiency",
+      list: [
+        { name: "Cinematography", level: 85, icon: "camera", items: ["Canon", "Sony", "Gimbal", "Tripod", "Events", "Conferences", "Interviews", "Short Videos"] },
+        { name: "Post-Production", level: 90, icon: "edit", items: ["CapCut", "Premiere Pro", "After Effects", "Color Grading", "Editing", "Subtitles", "Cover Design", "Motion", "Audio"] },
+        { name: "Party Publicity", level: 80, icon: "flag", items: ["Theme Party Day", "Party Classes", "Red Study", "Volunteering", "News Sense", "Discipline", "Confidentiality"] }
+      ]
+    },
+    contact: {
+      eyebrow: "CONTACT",
+      title: "Get in Touch",
+      sub: "Looking forward to collaborating. Feel free to reach out.",
+      copy: "Copy",
+      copied: "Copied",
+      phoneLabel: "Phone", emailLabel: "Email", birthLabel: "Born",
+      eduLabel: "Education", majorLabel: "Major", deptLabel: "Department"
+    },
+    footer: { copy: "© 2026 Li Yun · All rights reserved", update: "Last updated" }
+  }
+};
+
+/* ============ Contact info (email obfuscated) ============ */
+const contactInfo = {
+  phone: "13257114323",
+  emailParts: ["227498509", "qq", "com"], // joined as 227498509@qq.com
+  birth: "2008.01",
+  education: "本科 / Bachelor",
+  major: "机械电子工程 / Mechatronic Engineering",
+  dept: "智能制造系 / Intelligent Manufacturing"
+};
+const getEmail = () => contactInfo.emailParts[0] + "@" + contactInfo.emailParts[1] + "." + contactInfo.emailParts[2];
+
+/* ============ Icons ============ */
+const icons = {
+  camera: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>',
+  edit: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4z"/></svg>',
+  flag: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>',
+  phone: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>',
+  mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>',
+  calendar: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>',
+  cap: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>'
+};
+
+/* ============ Helpers ============ */
+const $ = (s, p=document) => p.querySelector(s);
+const $$ = (s, p=document) => [...p.querySelectorAll(s)];
+const el = (tag, attrs={}, children=[]) => {
+  const e = document.createElement(tag);
+  Object.entries(attrs).forEach(([k,v]) => {
+    if (k === "class") e.className = v;
+    else if (k === "html") e.innerHTML = v;
+    else if (k.startsWith("on") && typeof v === "function") e.addEventListener(k.slice(2), v);
+    else if (v !== false && v != null) e.setAttribute(k, v);
+  });
+  (Array.isArray(children) ? children : [children]).forEach(c => {
+    if (c == null) return;
+    e.appendChild(typeof c === "string" ? document.createTextNode(c) : c);
+  });
+  return e;
+};
+
+/* ============ State ============ */
+const currentLang = "zh";
+let currentTheme = localStorage.getItem("theme") || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+
+/* ============ Theme ============ */
+function applyTheme(t) {
+  document.documentElement.setAttribute("data-theme", t);
+  currentTheme = t;
+  localStorage.setItem("theme", t);
+  const sun = $("#themeBtn .sun-icon");
+  if (t === "dark") {
+    sun.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+  } else {
+    sun.innerHTML = '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>';
+  }
+}
+$("#themeBtn").addEventListener("click", () => applyTheme(currentTheme === "dark" ? "light" : "dark"));
+
+/* ============ Language (Chinese only) ============ */
+function t(key) {
+  const data = resume[currentLang];
+  return key.split(".").reduce((o,k) => (o==null?o:o[k]), data) || "";
+}
+function applyI18n() {
+  document.documentElement.lang = "zh-CN";
+  $("#navName").textContent = resume[currentLang].navName;
+  $$("[data-i18n]").forEach(n => {
+    const key = n.getAttribute("data-i18n");
+    const val = t(key);
+    if (val) n.textContent = val;
+  });
+  renderHeroTags();
+  renderPortfolio();
+  renderSkills();
+  renderContact();
+  renderFooter();
+}
+
+/* ============ Render: Hero tags ============ */
+function renderHeroTags() {
+  const c = $("#heroTags");
+  c.innerHTML = "";
+  resume[currentLang].tags.forEach(tag => c.appendChild(el("span", {}, tag)));
+}
+
+/* ============ Render: Portfolio Tabs ============ */
+function renderPortfolio() {
+  const wrap = $("#portfolioTabs");
+  wrap.innerHTML = "";
+  const data = resume[currentLang].portfolio;
+  const cats = [{ key: "all", name: data.all }, ...data.categories];
+
+  const tablist = el("div", { class: "tabs-nav", role: "tablist", "aria-label": "作品集分类" });
+  const panels = el("div");
+
+  cats.forEach((cat, i) => {
+    const btn = el("button", {
+      class: "tab-btn", role: "tab", id: `tab-${cat.key}`,
+      "aria-selected": i === 0 ? "true" : "false",
+      "aria-controls": `panel-${cat.key}`, tabindex: i === 0 ? 0 : -1
+    }, cat.name);
+    tablist.appendChild(btn);
+
+    const items = cat.key === "all"
+      ? data.categories.flatMap(c => c.items.map(it => ({...it, cat: c.name})))
+      : cat.items.map(it => ({...it, cat: cat.name}));
+
+    const grid = el("div", { class: "portfolio-grid" });
+    items.forEach(it => grid.appendChild(renderWorkCard(it)));
+
+    const panel = el("div", {
+      class: "tab-panel" + (i === 0 ? " active" : ""),
+      role: "tabpanel", id: `panel-${cat.key}`,
+      "aria-labelledby": `tab-${cat.key}`, hidden: i !== 0 ? "" : null
+    }, grid);
+    panels.appendChild(panel);
+  });
+
+  wrap.appendChild(tablist);
+  wrap.appendChild(panels);
+
+  // keyboard + click
+  const btns = $$(".tab-btn", wrap);
+  btns.forEach((btn, i) => {
+    btn.addEventListener("click", () => activateTab(wrap, i));
+    btn.addEventListener("keydown", (e) => {
+      let next = i;
+      if (e.key === "ArrowRight") next = (i + 1) % btns.length;
+      else if (e.key === "ArrowLeft") next = (i - 1 + btns.length) % btns.length;
+      else if (e.key === "Home") next = 0;
+      else if (e.key === "End") next = btns.length - 1;
+      else return;
+      e.preventDefault();
+      activateTab(wrap, next);
+      btns[next].focus();
+    });
+  });
+}
+
+function activateTab(wrap, idx) {
+  const btns = $$(".tab-btn", wrap);
+  const panels = $$(".tab-panel", wrap);
+  btns.forEach((b, i) => {
+    b.setAttribute("aria-selected", i === idx ? "true" : "false");
+    b.tabIndex = i === idx ? 0 : -1;
+  });
+  panels.forEach((p, i) => {
+    p.classList.toggle("active", i === idx);
+    if (i === idx) p.removeAttribute("hidden"); else p.setAttribute("hidden", "");
+  });
+}
+
+function renderWorkCard(it) {
+  const isVideo = it.type === "video";
+  const card = el("article", { class: "work-card" + (isVideo ? " video-card" : "") });
+  const media = el("div", { class: "work-media" });
+
+  let mediaEl;
+  if (isVideo) {
+    mediaEl = el("video", {
+      src: it.file, preload: "metadata", playsinline: "",
+      "webkit-playsinline": "", muted: "", loop: ""
+    });
+    mediaEl.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (mediaEl.paused) { mediaEl.play(); mediaEl.controls = true; }
+      else { mediaEl.pause(); }
+    });
+    const play = el("div", { class: "play-icon", html: '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>' });
+    mediaEl.addEventListener("play", () => play.style.display = "none");
+    mediaEl.addEventListener("pause", () => { play.style.display = "flex"; mediaEl.controls = false; });
+    media.appendChild(mediaEl);
+    media.appendChild(play);
+  } else {
+    mediaEl = el("img", { src: it.file, alt: it.title, loading: "lazy" });
+    media.appendChild(mediaEl);
+  }
+
+  const badge = el("span", { class: "work-badge" });
+  badge.appendChild(el("span", { class: "pulse" }));
+  badge.appendChild(document.createTextNode(isVideo ? resume[currentLang].portfolio.video : resume[currentLang].portfolio.photo));
+  media.appendChild(badge);
+
+  const body = el("div", { class: "work-body" });
+  body.appendChild(el("h3", { class: "work-title" }, it.title));
+  body.appendChild(el("div", { class: "work-title-en" }, it.titleEn));
+  body.appendChild(el("p", { class: "work-desc" }, it.desc));
+
+  card.appendChild(media);
+  card.appendChild(body);
+  return card;
+}
+
+/* ============ Render: Skills ============ */
+function renderSkills() {
+  const grid = $("#skillsGrid");
+  grid.innerHTML = "";
+  const data = resume[currentLang].skills;
+  data.list.forEach(s => {
+    const card = el("div", { class: "skill-card" });
+    const head = el("div", { class: "skill-head" });
+    const nameWrap = el("div", { class: "skill-name" });
+    nameWrap.appendChild(el("span", { class: "skill-icon", html: icons[s.icon] || icons.camera }));
+    nameWrap.appendChild(document.createTextNode(s.name));
+    head.appendChild(nameWrap);
+    head.appendChild(el("span", { class: "skill-level" }, `${s.level}%`));
+    card.appendChild(head);
+
+    const bar = el("div", { class: "skill-bar" });
+    const fill = el("div", { class: "skill-bar-fill" });
+    bar.appendChild(fill);
+    card.appendChild(bar);
+    setTimeout(() => { fill.style.width = s.level + "%"; }, 150);
+
+    const chips = el("div", { class: "skill-chips" });
+    s.items.forEach(i => chips.appendChild(el("span", { class: "chip" }, i)));
+    card.appendChild(chips);
+
+    grid.appendChild(card);
+  });
+}
+
+/* ============ Render: Contact ============ */
+function renderContact() {
+  const grid = $("#contactGrid");
+  grid.innerHTML = "";
+  const c = resume[currentLang].contact;
+  const email = getEmail();
+
+  const items = [
+    { label: c.phoneLabel, value: contactInfo.phone, icon: icons.phone, copy: false, href: "tel:" + contactInfo.phone },
+    { label: c.emailLabel, value: email, icon: icons.mail, copy: true, href: "mailto:" + email },
+    { label: c.birthLabel, value: contactInfo.birth, icon: icons.calendar },
+    { label: c.eduLabel, value: contactInfo.education, icon: icons.cap },
+    { label: c.majorLabel, value: contactInfo.major, icon: icons.cap },
+    { label: c.deptLabel, value: contactInfo.dept, icon: icons.cap }
+  ];
+
+  items.forEach(it => {
+    const card = el("div", { class: "contact-item" });
+    card.appendChild(el("span", { class: "contact-icon", html: it.icon }));
+    const info = el("div");
+    info.appendChild(el("div", { class: "contact-label" }, it.label));
+    const val = el("div", { class: "contact-value" });
+    if (it.href) {
+      const a = el("a", { href: it.href }, it.value);
+      val.appendChild(a);
+    } else {
+      val.textContent = it.value;
+    }
+    info.appendChild(val);
+    card.appendChild(info);
+    if (it.copy) {
+      const btn = el("button", { class: "copy-btn", type: "button" }, c.copy);
+      btn.addEventListener("click", () => {
+        navigator.clipboard.writeText(email).then(() => {
+          btn.textContent = c.copied;
+          btn.classList.add("copied");
+          setTimeout(() => { btn.textContent = c.copy; btn.classList.remove("copied"); }, 1800);
+        }).catch(() => {
+          const ta = el("textarea", { value: email });
+          document.body.appendChild(ta); ta.select();
+          try { document.execCommand("copy"); btn.textContent = c.copied; btn.classList.add("copied"); setTimeout(()=>{btn.textContent=c.copy;btn.classList.remove("copied");},1800); } catch(e){}
+          document.body.removeChild(ta);
+        });
+      });
+      card.appendChild(btn);
+    }
+    grid.appendChild(card);
+  });
+}
+
+/* ============ Footer ============ */
+function renderFooter() {
+  const f = resume[currentLang].footer;
+  $("#footerCopy").textContent = f.copy;
+  const d = new Date();
+  const dateStr = `${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,"0")}.${String(d.getDate()).padStart(2,"0")}`;
+  $("#footerUpdate").textContent = `${f.update}: ${dateStr}`;
+}
+
+/* ============ Print ============ */
+$("#printBtn").addEventListener("click", () => window.print());
+
+/* ============ Nav ============ */
+$("#navToggle").addEventListener("click", () => $("#navLinks").classList.toggle("open"));
+$$("#navLinks a").forEach(a => a.addEventListener("click", () => $("#navLinks").classList.remove("open")));
+
+/* ============ Back to top + scroll reveal ============ */
+const toTop = $("#toTop");
+window.addEventListener("scroll", () => {
+  toTop.classList.toggle("visible", window.scrollY > 500);
+}, { passive: true });
+toTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+}, { threshold: 0.12 });
+$$(".reveal").forEach(s => io.observe(s));
+
+/* ============ Init ============ */
+applyTheme(currentTheme);
+applyI18n();
+</script>
+</body>
+</html>
