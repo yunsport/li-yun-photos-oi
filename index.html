@@ -951,7 +951,7 @@ function renderWorkCard(it, items, index) {
     });
     stage.appendChild(play);
   } else {
-    const img = el("img", { src: it.file, alt: it.title, loading: "lazy", decoding: "async" });
+    const img = el("img", { src: it.file, alt: it.title, loading: "eager", decoding: "async" });
     stage.appendChild(img);
   }
   media.appendChild(stage);
